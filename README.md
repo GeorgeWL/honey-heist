@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+A Character Sheet for the one-page RPG **Honey Heist** by Grant Howitt ([LINK](https://gshowitt.itch.io/honey-heist)), please support the creator on their [Patreon](https://www.patreon.com/gshowitt), or buy paying their games on [itch.io](https://gshowitt.itch.io)
+
 ## Available Scripts
 
 In the project directory, you can run:
