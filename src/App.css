@@ -3,6 +3,8 @@
   padding: 1vmin;
   background-color: #fffffd;
   color: black;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .App-logo {
@@ -13,8 +15,8 @@
 .App-header {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   font-size: calc(10px + 2vmin);
 }
 
@@ -34,4 +36,17 @@ a[href] {
 em {
   color: #404040;
   font-style: normal;
+}
+
+input,
+select,
+button,
+a {
+  cursor: pointer;
+}
+
+input:disabled,
+select:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
 }

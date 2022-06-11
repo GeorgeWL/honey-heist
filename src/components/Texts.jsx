@@ -1,7 +1,9 @@
+import styled from 'styled-components';
 import List from './List';
 
 export const OutlineText = () => (
   <div>
+    <h2>Outline</h2>
     <p>
       It's{'  '} <strong>Honeycon 2017</strong>. You are going to undertake the
       greatest heist the world has ever seen.
@@ -20,7 +22,7 @@ export const OutlineText = () => (
 
 export const CharacterCreationText = () => (
   <div>
-    <h2># 1: Character Creation</h2>
+    <h2>Character Creation</h2>
     <p>Roll 3D6 to determine your descriptor, your role, and your bear type.</p>
   </div>
 );
@@ -47,4 +49,13 @@ export const ChangingStatesText = () => (
       of honey.
     </p>
   </div>
+);
+const FooterStyled = styled.footer`
+  margin-top: 20px;
+`;
+
+export const FooterText = () => (
+  <FooterStyled>
+    Companion for Honey Heist by Grant Howitt. This app is made by GeorgeWL
+  </FooterStyled>
 );
