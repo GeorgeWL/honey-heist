@@ -28,7 +28,9 @@ const flexStyle = css`
     margin: 0 5px;
   }
 `;
-const FieldsetStyled = styled.fieldset<{ flexInline?: boolean }>`
+const FieldsetStyled = styled.fieldset<{
+  flexInline?: boolean;
+}>`
   ${(props) => props.flexInline && flexStyle}
 `;
 

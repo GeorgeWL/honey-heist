@@ -33,10 +33,15 @@ export const selectOptionsBearRole: ISelectOption[] = [
   { label: BearRoleType[5], value: 5 },
 ];
 
-export const radioOptions = [
-  { label: RadioToggleOptions[0], value: RadioToggleOptions.Roll },
+export const radioOptions: ISelectOption[] = [
+  {
+    label: RadioToggleOptions[0],
+    value: RadioToggleOptions.Roll,
+    disabled: true,
+  },
   {
     label: RadioToggleOptions[1],
     value: RadioToggleOptions.Manual,
+    disabled: true,
   },
 ];

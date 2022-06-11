@@ -6,6 +6,7 @@ import { FailStateBear, FailStateCriminal } from './components/FailStates';
 import Modal from './components/Modal';
 import RadioOptions from './components/RadioOptions';
 import Select from './components/Select';
+import { FlexColCenter, FlexColFullWidth } from './components/styled/Flex';
 import {
   ChangingStatesText,
   CharacterCreationText,
@@ -50,20 +51,24 @@ const App = () => {
       <header className="App-header">
         <img src={logo} alt="logo" className="App-logo" />
         <h1>Honey Heist Character Tracker</h1>
-        <p>
-          The Focus of this app is to track characters for Honey Heist, however
-          there is the option to roll characters from within the app too
-        </p>
-        <RadioOptions
-          inline
-          value={radioToggle}
-          onChange={setRadioToggle}
-          options={radioOptions}
-          name="manual"
-          label="Roll or Manual?"
-        />
       </header>
       <section className="App-main">
+        <FlexColCenter>
+          <p>
+            The Focus of this app is to track characters for Honey Heist,
+            however there is the option to roll characters from within the app
+            too
+          </p>
+          <RadioOptions
+            inline
+            value={radioToggle}
+            onChange={setRadioToggle}
+            options={radioOptions}
+            name="manual"
+            label="Roll or Manual?"
+            disabled
+          />
+        </FlexColCenter>
         <OutlineText />
         <CharacterCreationText />
         <h3>Descriptor</h3>
