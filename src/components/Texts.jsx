@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import List from './List';
 import { Footer } from './styled/Footer';
 import { Strong, StrongUpper } from './styled/Strong';

@@ -1,20 +1,28 @@
 import { useEffect, useState } from 'react';
 import { ButtonStyleTypes } from '../enums/ButtonTypes';
-import { FailStateType } from '../enums/FailStateTypes';
-import Button from './Button';
-import { FlexColHalfWidth, FlexRow, FlexRowFullWidth } from './styled/Flex';
+import { GameStateType } from '../enums/GameStateTypes';
+import Button from './styled/Button';
+import {
+  FlexCol,
+  FlexColCenter,
+  FlexColHalfWidth,
+  FlexRow,
+  FlexRowFullWidth,
+} from './styled/Flex';
 import { Label } from './styled/Label';
 import { Strong, StrongUpper } from './styled/Strong';
 
 interface IProps {
-  onGameOver: (state: FailStateType) => void;
+  onGameOver: (state: GameStateType) => void;
+  gameStatus: GameStateType;
 }
 
-const BearStateTracker = ({ onGameOver }: IProps) => {
+const BearStateTracker = ({ onGameOver, gameStatus }: IProps) => {
   const [bearStat, setBearStat] = useState(3);
   const [crimeStat, setCrimeStat] = useState(3);
 
-  const isInFailState = bearStat === 6 || crimeStat === 6;
+  const isInFailState =
+    gameStatus !== GameStateType.Initial && (bearStat === 6 || crimeStat === 6);
 
   const handleFrustration = () => {
     setBearStat((prevState) => prevState + 1);
@@ -29,10 +37,21 @@ const BearStateTracker = ({ onGameOver }: IProps) => {
   useEffect(() => {
     if (isInFailState) {
       onGameOver(
-        bearStat === 1 ? FailStateType.FullBear : FailStateType.FullCriminal
+        bearStat === 1 ? GameStateType.FullBear : GameStateType.FullCriminal
       );
     }
   }, [bearStat, onGameOver, isInFailState]);
+  useEffect(() => {
+    if (
+      gameStatus === GameStateType.Initial &&
+      crimeStat !== 3 &&
+      bearStat !== 3
+    ) {
+      setCrimeStat(3);
+      setBearStat(3);
+    }
+  }, [gameStatus, crimeStat, bearStat]);
+
   return (
     <FlexColHalfWidth>
       <FlexRowFullWidth>
@@ -58,25 +77,23 @@ const BearStateTracker = ({ onGameOver }: IProps) => {
         </Button>
       </FlexRowFullWidth>
       <FlexRowFullWidth>
-        <FlexRow>
+        <FlexColCenter>
           <Label>
-            <StrongUpper>
-              <StrongUpper>Bear</StrongUpper>
-            </StrongUpper>{' '}
-            Points: {bearStat}
+            <StrongUpper>Bear</StrongUpper> Points
           </Label>
           <input
             type="range"
-            min={1}
+            min={0}
             max={6}
             readOnly
             disabled
             value={bearStat}
           />
-        </FlexRow>
-        <FlexRow>
+          <FlexRow>{bearStat}</FlexRow>
+        </FlexColCenter>
+        <FlexColCenter>
           <Label>
-            <StrongUpper>Crime</StrongUpper> Points: {crimeStat}
+            <StrongUpper>Crime</StrongUpper> Points
           </Label>
           <input
             type="range"
@@ -86,7 +103,8 @@ const BearStateTracker = ({ onGameOver }: IProps) => {
             disabled
             value={crimeStat}
           />
-        </FlexRow>
+          <FlexRow>{crimeStat}</FlexRow>
+        </FlexColCenter>
       </FlexRowFullWidth>
     </FlexColHalfWidth>
   );

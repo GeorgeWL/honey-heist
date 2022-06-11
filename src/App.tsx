@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import './App.css';
+import logo from './assets/logo.png';
 import BearStateTracker from './components/BearStateTracker';
+import { FailStateBear, FailStateCriminal } from './components/FailStates';
+import Modal from './components/Modal';
 import RadioOptions from './components/RadioOptions';
 import Select from './components/Select';
 import {
   ChangingStatesText,
   CharacterCreationText,
+  EndText,
   FooterText,
   OutlineText,
 } from './components/Texts';
@@ -15,14 +19,34 @@ import {
   selectOptionsBearSkill,
   selectOptionsDescriptor,
 } from './constants/selectOptions';
+import { GameStateType } from './enums/GameStateTypes';
 import { RadioToggleOptions } from './enums/SelectTypes';
-import logo from './logo.png';
 
 const App = () => {
   const [value, setValue] = useState('');
   const [radioToggle, setRadioToggle] = useState(RadioToggleOptions.Manual);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [gameStatus, setGameStatus] = useState(GameStateType.FullBear);
+  const handleGameOver = (failState: GameStateType) => {
+    setIsModalOpen(true);
+    setGameStatus(failState);
+  };
   return (
     <div className="App">
+      {isModalOpen && (
+        <Modal
+          onClose={() => {
+            setGameStatus(GameStateType.Initial);
+            setTimeout(() => {
+              setIsModalOpen(false);
+              setGameStatus(GameStateType.InPlay);
+            }, 200);
+          }}
+        >
+          {gameStatus === GameStateType.FullBear && <FailStateBear />}
+          {gameStatus === GameStateType.FullCriminal && <FailStateCriminal />}
+        </Modal>
+      )}
       <header className="App-header">
         <img src={logo} alt="logo" className="App-logo" />
         <h1>Honey Heist Character Tracker</h1>
@@ -69,7 +93,8 @@ const App = () => {
       </section>
       <section>
         <ChangingStatesText />
-        <BearStateTracker />
+        <BearStateTracker onGameOver={handleGameOver} gameStatus={gameStatus} />
+        <EndText />
       </section>
       <FooterText />
     </div>

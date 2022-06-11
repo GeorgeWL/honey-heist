@@ -19,6 +19,15 @@ export const FlexCol = styled(Flex)`
   flex-direction: column;
 `;
 
+export const FlexColCenter = styled(FlexCol)`
+  justify-content: center;
+  align-items: center;
+`;
+export const FlexRowCenter = styled(FlexRow)`
+  justify-content: center;
+  align-items: center;
+`;
+
 export const FlexColFullWidth = styled(FlexCol)`
   width: 100%;
 `;
@@ -28,17 +37,16 @@ export const FlexColHalfWidth = styled(FlexCol)`
   margin: auto;
 `;
 
-export const FlexColModal = styled(FlexCol)`
+export const FlexColModal = styled(FlexColCenter)`
   position: fixed;
   height: 100vh;
   width: 100vw;
-  justify-content: center;
-  align-items: center;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 1;
   background: rgba(0, 0, 0, 0.95);
-  color: white;
+  overflow: hidden;
+  text-align: center;
 `;

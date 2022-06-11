@@ -15,7 +15,7 @@ interface IProps {
   inline?: boolean;
 }
 
-const getOptName = (fieldsetName: string, value: string | number) =>
+const getOptKey = (fieldsetName: string, value: string | number) =>
   `${fieldsetName}-${value}`;
 const flexStyle = css`
   display: flex;
@@ -44,12 +44,12 @@ const RadioOptions = ({
   <FieldsetStyled flexInline={inline}>
     <legend>{label}</legend>
     {options.map((opt) => {
-      console.log({ value, optVal: opt.value });
-      const optName = getOptName(name, opt.value);
+      const optName = getOptKey(name, opt.value);
       return (
         <div key={optName}>
           <label htmlFor={optName}>{opt.label}</label>
           <input
+            id={optName}
             type="radio"
             value={opt.value}
             checked={opt.value === value}

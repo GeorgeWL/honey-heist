@@ -8,7 +8,7 @@ function useOnClickOutside(
     () => {
       const listener = (event: { target: EventTarget | Node | null }) => {
         // @ts-ignore: Do nothing if clicking ref's element or descendent elements
-        if (!ref?.current || ref?.current?.contains(event.target)) {
+        if (!ref.current || ref.current.contains(event.target)) {
           return;
         }
         // @ts-ignore: typing native events

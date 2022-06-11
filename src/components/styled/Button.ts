@@ -1,6 +1,5 @@
-import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
-import { ButtonStyleTypes } from '../enums/ButtonTypes';
+import { ButtonStyleTypes } from '../../enums/ButtonTypes';
 const primaryStyle = css`
   color: white;
   background: #466800;
@@ -15,7 +14,7 @@ const cancelStyle = css`
   background: #b10404;
 `;
 
-const ButonStyled = styled.button<{ variant: ButtonStyleTypes }>`
+const Button = styled.button<{ variant?: ButtonStyleTypes }>`
   border-width: 2px;
   border-style: solid;
   border-color: transparent;
@@ -25,7 +24,10 @@ const ButonStyled = styled.button<{ variant: ButtonStyleTypes }>`
   transition: background 0.4s ease, border 0.4s linear, color 0.4s linear,
     transform linear 0.2s;
 
-  ${(props) => props.variant === ButtonStyleTypes.primary && primaryStyle}
+  ${(props) =>
+    (props.variant === ButtonStyleTypes.primary ||
+      props.variant === undefined) &&
+    primaryStyle}
   ${(props) => props.variant === ButtonStyleTypes.secondary && secondaryStyle}
   ${(props) => props.variant === ButtonStyleTypes.cancel && cancelStyle}
   &:active {
@@ -39,28 +41,5 @@ const ButonStyled = styled.button<{ variant: ButtonStyleTypes }>`
     opacity: 0.25;
   }
 `;
-
-interface IProps {
-  variant?: ButtonStyleTypes;
-  disabled?: boolean;
-  onClick: () => void;
-  value?: string | number;
-  children: ReactNode;
-  title?: string;
-}
-
-const Button = ({
-  variant = ButtonStyleTypes.primary,
-  disabled,
-  onClick,
-  value,
-  children,
-  title,
-  ...rest
-}: IProps) => (
-  <ButonStyled variant={variant} onClick={onClick} value={value} {...rest}>
-    {children}
-  </ButonStyled>
-);
 
 export default Button;

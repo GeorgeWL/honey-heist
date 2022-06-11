@@ -1,41 +1,57 @@
 import React, { useRef } from 'react';
+import styled from 'styled-components';
 import { ButtonStyleTypes } from '../enums/ButtonTypes';
 import useOnClickOutside from '../react-hooks/useOnClickOutside';
-import Button from './Button';
+import Button from './styled/Button';
 import {
   FlexColHalfWidth,
   FlexColModal,
   FlexRowFullWidth,
 } from './styled/Flex';
+import { StrongUpper } from './styled/Strong';
 
 interface IProps {
   onClose: () => void;
   children: React.ReactNode;
 }
+const ModalContentStyled = styled(FlexColHalfWidth)`
+  position: relative;
+  background: white;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+`;
 
+const CloseButton = styled(Button)`
+  font-size: calc(16px + 0.5vmin);
+`;
 export const ModalContent = ({ onClose, children }: IProps) => {
   const ref = useRef<any>();
-  useOnClickOutside(ref, onClose);
+  useOnClickOutside(ref, () => onClose);
 
   return (
-    <FlexColHalfWidth ref={ref}>
-      <FlexRowFullWidth>
-        <Button
-          onClick={onClose}
+    <ModalContentStyled ref={ref}>
+      <FlexRowFullWidth style={{ justifyContent: 'flex-end' }}>
+        <CloseButton
+          onClick={(evt) => {
+            evt.preventDefault();
+            onClose();
+          }}
           variant={ButtonStyleTypes.secondary}
           title="Close Modal"
+          style={{ color: 'black' }}
         >
-          X
-        </Button>
+          <StrongUpper>X</StrongUpper>
+        </CloseButton>
       </FlexRowFullWidth>
       {children}
-    </FlexColHalfWidth>
+    </ModalContentStyled>
   );
 };
 
 const Modal = ({ onClose, children }: IProps) => (
   <FlexColModal>
-    <ModalContent onClose={onClose}>{children}</ModalContent>
+    <ModalContent onClose={() => onClose()}>{children}</ModalContent>
   </FlexColModal>
 );
 
