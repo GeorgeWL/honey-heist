@@ -37,7 +37,7 @@ const BearStateTracker = ({ onGameOver, gameStatus }: IProps) => {
   useEffect(() => {
     if (isInFailState) {
       onGameOver(
-        bearStat === 1 ? GameStateType.FullBear : GameStateType.FullCriminal
+        bearStat === 6 ? GameStateType.FullBear : GameStateType.FullCriminal
       );
     }
   }, [bearStat, onGameOver, isInFailState]);

@@ -1,8 +1,10 @@
+:root {
+  background: #fffff6;
+  color: black;
+}
 .App {
   text-align: left;
   padding: 1vmin;
-  background-color: #fffffd;
-  color: black;
   max-width: 1200px;
   margin: auto;
 }
