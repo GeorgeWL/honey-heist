@@ -28,7 +28,13 @@ const Select = ({
       </option>
     )}
     {options.map((opt) => (
-      <option value={opt.value}>{opt.label}</option>
+      <option
+        key={`{${opt.value}-${opt.label}`}
+        value={opt.value}
+        disabled={opt.disabled}
+      >
+        {opt.label}
+      </option>
     ))}
   </select>
 );

@@ -22,3 +22,7 @@ export enum BearRoleType {
   '5: Thief',
   '6: Face',
 }
+export enum RadioToggleOptions {
+  Roll = 0,
+  Manual = 1,
+}

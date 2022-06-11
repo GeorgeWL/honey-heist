@@ -2,6 +2,7 @@ import {
   BearRoleType,
   BearSkillType,
   DescriptorSelectType,
+  RadioToggleOptions,
 } from '../enums/SelectTypes';
 import ISelectOption from '../interfaces/ISelectOption';
 
@@ -30,4 +31,12 @@ export const selectOptionsBearRole: ISelectOption[] = [
   { label: BearRoleType[3], value: 3 },
   { label: BearRoleType[4], value: 4 },
   { label: BearRoleType[5], value: 5 },
+];
+
+export const radioOptions = [
+  { label: RadioToggleOptions[0], value: RadioToggleOptions.Roll },
+  {
+    label: RadioToggleOptions[1],
+    value: RadioToggleOptions.Manual,
+  },
 ];
