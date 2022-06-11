@@ -5,13 +5,14 @@ interface IListProps {
   type: UnorderedListTypes | OrderedListTypes;
 }
 
+const ListChildren = (items: JSX.Element[]) =>
+  items.map((item, key) => <li key={key + 'li'}>{item}</li>);
+
 const List = ({ items, type = UnorderedListTypes.ul }: IListProps) => {
-  const ListChildren = () =>
-    items.map((item, key) => <li key={key + 'li'}>{item}</li>);
   if (OrderedListTypes[type]) {
-    return <ul>{ListChildren()}</ul>;
+    return <ul>{ListChildren(items)}</ul>;
   }
-  return <ol>{ListChildren()}</ol>;
+  return <ol>{ListChildren(items)}</ol>;
 };
 
 export default List;
