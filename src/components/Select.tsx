@@ -1,11 +1,9 @@
-interface ISelectOption {
-  value: string | number;
-  label: JSX.Element | string;
-}
+import ISelectOption from '../interfaces/ISelectOption';
+
 interface IProps {
   options: ISelectOption[];
   onChange: (value: string) => void;
-  value: string;
+  value: string | number;
   hasEmptyValue?: boolean;
   emptyValueLabel?: JSX.Element | string;
   disabled?: boolean;
