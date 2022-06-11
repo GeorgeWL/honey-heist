@@ -14,3 +14,11 @@ export enum BearSkillType {
   '5: Sun (Sense Honey)',
   '6: Honey Badger (Carnage)',
 }
+export enum BearRoleType {
+  '1: Muscle',
+  '2: Brains',
+  '3: Driver',
+  '4: Hacker',
+  '5: Thief',
+  '6: Face',
+}
