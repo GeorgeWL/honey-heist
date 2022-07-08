@@ -15,10 +15,6 @@ export const FlexRowFullWidth = styled(FlexRow)`
   margin: 10px 5px;
 `;
 
-export const FlexCol = styled(Flex)`
-  flex-direction: column;
-`;
-
 export const FlexColCenter = styled(FlexCol)`
   justify-content: center;
   align-items: center;
@@ -26,10 +22,6 @@ export const FlexColCenter = styled(FlexCol)`
 export const FlexRowCenter = styled(FlexRow)`
   justify-content: center;
   align-items: center;
-`;
-
-export const FlexColFullWidth = styled(FlexCol)`
-  width: 100%;
 `;
 
 export const FlexColHalfWidth = styled(FlexCol)`
