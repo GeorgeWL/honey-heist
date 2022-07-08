@@ -29,6 +29,10 @@ export const FlexColHalfWidth = styled(FlexCol)`
   margin: auto;
 `;
 
+export const FlexColFullWidth = styled(FlexCol)`
+  width: 100%;
+`;
+
 export const FlexColModal = styled(FlexColCenter)`
   position: fixed;
   height: 100vh;
