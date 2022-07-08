@@ -9,6 +9,10 @@ export const FlexRow = styled(Flex)`
   align-items: center;
 `;
 
+export const FlexCol = styled(Flex)`
+  flex-direction: column;
+`;
+
 export const FlexRowFullWidth = styled(FlexRow)`
   width: 100%;
   justify-content: space-between;
