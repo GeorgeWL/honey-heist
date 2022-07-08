@@ -79,7 +79,7 @@ export const EndText = () => (
 export const FooterText = () => (
   <Footer>
   Companion for the one-page RPG Honey Heist by Grant Howitt, please support the creator on their <a href="https://www.patreon.com/gshowitt" target="_blank" rel="noreferrer">Patreon</a>, 
-  or buy buying their games on <a href='https://gshowitt.itch.io'>itch.io</a>. This app is made by{' '}
+  or buy buying their games on <a href="https://gshowitt.itch.io">itch.io</a>. This app is made by{' '}
     <a href="https://georgewl.dev" target="_blank" rel="noreferrer">
       GeorgeWL
     </a>
