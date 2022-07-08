@@ -9,14 +9,14 @@ export const FlexRow = styled(Flex)`
   align-items: center;
 `;
 
+export const FlexCol = styled(Flex)`
+  flex-direction: column;
+`;
+
 export const FlexRowFullWidth = styled(FlexRow)`
   width: 100%;
   justify-content: space-between;
   margin: 10px 5px;
-`;
-
-export const FlexCol = styled(Flex)`
-  flex-direction: column;
 `;
 
 export const FlexColCenter = styled(FlexCol)`
@@ -28,13 +28,13 @@ export const FlexRowCenter = styled(FlexRow)`
   align-items: center;
 `;
 
-export const FlexColFullWidth = styled(FlexCol)`
-  width: 100%;
-`;
-
 export const FlexColHalfWidth = styled(FlexCol)`
   width: 50%;
   margin: auto;
+`;
+
+export const FlexColFullWidth = styled(FlexCol)`
+  width: 100%;
 `;
 
 export const FlexColModal = styled(FlexColCenter)`

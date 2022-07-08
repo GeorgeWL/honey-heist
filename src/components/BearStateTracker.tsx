@@ -3,7 +3,6 @@ import { ButtonStyleTypes } from '../enums/ButtonTypes';
 import { GameStateType } from '../enums/GameStateTypes';
 import Button from './styled/Button';
 import {
-  FlexCol,
   FlexColCenter,
   FlexColHalfWidth,
   FlexRow,

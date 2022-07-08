@@ -6,7 +6,7 @@ import { FailStateBear, FailStateCriminal } from './components/FailStates';
 import Modal from './components/Modal';
 import RadioOptions from './components/RadioOptions';
 import Select from './components/Select';
-import { FlexColCenter, FlexColFullWidth } from './components/styled/Flex';
+import { FlexColCenter } from './components/styled/Flex';
 import {
   ChangingStatesText,
   CharacterCreationText,
