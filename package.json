@@ -1,6 +1,6 @@
 {
   "name": "honey-heist",
-  "version": "1.0.0alpha",
+  "version": "1.0.0-alpha",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
