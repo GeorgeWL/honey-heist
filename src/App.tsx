@@ -22,7 +22,7 @@ import {
 } from './constants/selectOptions';
 import { GameStateType } from './enums/GameStateTypes';
 import { RadioToggleOptions } from './enums/SelectTypes';
-
+// TODO: Test PR delete when done
 const App = () => {
   const [value, setValue] = useState('');
   const [radioToggle, setRadioToggle] = useState(RadioToggleOptions.Manual);
