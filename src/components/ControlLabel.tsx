@@ -1,5 +1,4 @@
 import { cloneElement, ReactElement, ReactNode } from 'react';
-import { FlexColHalfWidth } from './styled/Flex';
 import { Label } from './styled/Label';
 
 interface IProps {
@@ -8,10 +7,12 @@ interface IProps {
   id?: string;
 }
 const ControlLabel = ({ id, label, children }: IProps) => (
-  <FlexColHalfWidth>
-    <Label>{label}</Label>
+  <>
+    <Label htmlFor={id} style={{ margin: '5px 0' }}>
+      {label}
+    </Label>
     {cloneElement(children, { id })}
-  </FlexColHalfWidth>
+  </>
 );
 
 export default ControlLabel;
