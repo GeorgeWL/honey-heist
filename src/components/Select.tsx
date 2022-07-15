@@ -7,6 +7,7 @@ interface IProps {
   hasEmptyValue?: boolean;
   emptyValueLabel?: JSX.Element | string;
   disabled?: boolean;
+  id?: string;
 }
 
 const Select = ({
@@ -16,11 +17,13 @@ const Select = ({
   value,
   onChange,
   disabled,
+  id,
 }: IProps) => (
   <select
     value={value}
     disabled={disabled}
     onChange={(evt) => onChange(evt.target.value)}
+    id={id}
   >
     {hasEmptyValue && (
       <option value="" disabled>
