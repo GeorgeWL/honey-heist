@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import styled from 'styled-components';
 import { ButtonStyleTypes } from '../enums/ButtonTypes';
 import useOnClickOutside from '../react-hooks/useOnClickOutside';
-import Button from './styled/Button';
+import { CloseButton } from './styled/Button';
 import {
   FlexColHalfWidth,
   FlexColModal,
@@ -22,12 +22,10 @@ const ModalContentStyled = styled(FlexColHalfWidth)`
   align-items: center;
 `;
 
-const CloseButton = styled(Button)`
-  font-size: calc(16px + 0.5vmin);
-`;
 export const ModalContent = ({ onClose, children }: IProps) => {
   const ref = useRef<any>();
-  useOnClickOutside(ref, () => onClose);
+  const callback = useCallback(onClose, [onClose]);
+  useOnClickOutside(ref, () => callback);
 
   return (
     <ModalContentStyled ref={ref}>
