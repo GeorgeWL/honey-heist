@@ -10,7 +10,6 @@ import Select from './components/Select';
 import {
   FlexCol,
   FlexColCenter,
-  FlexColHalfWidth,
   FlexRowHalfWidth,
 } from './components/styled/Flex';
 import { GridWithGap } from './components/styled/Grid';
