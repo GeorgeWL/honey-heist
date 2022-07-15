@@ -1,6 +1,6 @@
 import { ButtonStyleTypes } from '../enums/ButtonTypes';
 import Button from './styled/Button';
-import Dice from '../assets/dice.svg';
+import diceImage from '../assets/dice.svg';
 
 interface IProps {
   onClick: () => void;
@@ -12,7 +12,7 @@ const DiceButton = ({ onClick, disabled }: IProps) => (
     onClick={onClick}
     disabled={disabled}
   >
-    <Dice />
+    <img src={diceImage} alt="Dice" style={{ width: '50px' }} /> Roll
   </Button>
 );
 
