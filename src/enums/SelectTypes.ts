@@ -22,7 +22,14 @@ export enum BearRoleType {
   '5: Thief',
   '6: Face',
 }
-export enum RadioToggleOptions {
-  Roll = 0,
-  Manual = 1,
+
+export enum HatType {
+  '1: Trilby',
+  '2: Top Hat',
+  '3: Bowler Hat',
+  '4: Flat-Cap',
+  '5: Cowboy',
+  '6: Fez',
+  '7: Crown',
+  '8: Roll Twice',
 }
