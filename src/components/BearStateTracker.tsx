@@ -6,10 +6,8 @@ import Button from './styled/Button';
 import {
   FlexColCenter,
   FlexColHalfWidth,
-  FlexRow,
   FlexRowFullWidth,
 } from './styled/Flex';
-import { Label } from './styled/Label';
 import { Strong, StrongUpper } from './styled/Strong';
 
 interface IProps {
