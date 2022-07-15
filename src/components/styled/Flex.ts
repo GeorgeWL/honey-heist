@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Flex = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 
 export const FlexRow = styled(Flex)`
