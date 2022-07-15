@@ -35,7 +35,7 @@ export const CharacterCreationText = () => (
 
 export const ChangingStatesText = () => (
   <div>
-    <h3>Stats</h3>
+    <h3>Stats Tracking</h3>
     <p>
       <Strong>Frustration:</Strong> When the plan fails and you run into
       difficulty, move one point from <StrongUpper>Criminal</StrongUpper> into{' '}
