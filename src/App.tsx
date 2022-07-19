@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import './App.css';
 import logo from './assets/logo.png';
 import BearStateTracker from './components/BearStateTracker';
+import ControlLabel from './components/ControlLabel';
+import DiceButton from './components/DiceButton';
 import { FailStateBear, FailStateCriminal } from './components/FailStates';
 import Modal from './components/Modal';
-import RadioOptions from './components/RadioOptions';
 import Select from './components/Select';
-import { FlexColCenter } from './components/styled/Flex';
+import {
+  FlexCol,
+  FlexColCenter,
+  FlexRowHalfWidth,
+} from './components/styled/Flex';
+import { GridWithGap } from './components/styled/Grid';
 import {
   ChangingStatesText,
   CharacterCreationText,
@@ -15,23 +21,31 @@ import {
   OutlineText,
 } from './components/Texts';
 import {
-  radioOptions,
   selectOptionsBearRole,
   selectOptionsBearSkill,
   selectOptionsDescriptor,
 } from './constants/selectOptions';
 import { GameStateType } from './enums/GameStateTypes';
-import { RadioToggleOptions } from './enums/SelectTypes';
+import { StatTypes } from './enums/StatTypes';
+import characterReducer, { initialState } from './reducers/characterReducer';
 
 const App = () => {
-  const [value, setValue] = useState('');
-  const [radioToggle, setRadioToggle] = useState(RadioToggleOptions.Manual);
+  const [state, dispatch] = useReducer(characterReducer, initialState);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [gameStatus, setGameStatus] = useState(GameStateType.FullBear);
+
   const handleGameOver = (failState: GameStateType) => {
     setIsModalOpen(true);
     setGameStatus(failState);
   };
+
+  const handleStatDiceRoll = (stat: StatTypes, optionsCount: number) =>
+    dispatch({
+      stat,
+      type: 'roll',
+      value: Math.floor(Math.random() * optionsCount),
+    });
+
   return (
     <div className="App">
       {isModalOpen && (
@@ -55,46 +69,101 @@ const App = () => {
       <section className="App-main">
         <FlexColCenter>
           <p>
-            The Focus of this app is to track characters for Honey Heist,
-            however there is the option to roll characters from within the app
-            too
+            The main focus of this app is to track characters for Honey Heist,
+            however there is the option to roll each stat by pressing the button
+            next to each selector
           </p>
-          <RadioOptions
-            inline
-            value={radioToggle}
-            onChange={setRadioToggle}
-            options={radioOptions}
-            name="manual"
-            label="Roll or Manual?"
-            disabled
-          />
         </FlexColCenter>
         <OutlineText />
         <CharacterCreationText />
-        <h3>Descriptor</h3>
-        <Select
-          options={selectOptionsDescriptor}
-          value={value}
-          onChange={setValue}
-          hasEmptyValue
-          disabled={radioToggle === RadioToggleOptions.Roll}
-        />
-        <h3>Bear Type &amp; Skill</h3>
-        <Select
-          options={selectOptionsBearSkill}
-          value={value}
-          onChange={setValue}
-          hasEmptyValue
-          disabled={radioToggle === RadioToggleOptions.Roll}
-        />
-        <h3>Role</h3>
-        <Select
-          options={selectOptionsBearRole}
-          value={value}
-          onChange={setValue}
-          hasEmptyValue
-          disabled={radioToggle === RadioToggleOptions.Roll}
-        />
+        <GridWithGap>
+          <FlexRowHalfWidth>
+            <FlexCol>
+              <ControlLabel label="Descriptor" id={StatTypes.descriptor}>
+                <Select
+                  options={selectOptionsDescriptor}
+                  value={state.descriptor}
+                  onChange={(value) =>
+                    dispatch({
+                      stat: StatTypes.descriptor,
+                      type: 'change',
+                      value,
+                    })
+                  }
+                  hasEmptyValue
+                />
+              </ControlLabel>
+            </FlexCol>
+            <DiceButton
+              onClick={() =>
+                handleStatDiceRoll(
+                  StatTypes.descriptor,
+                  selectOptionsDescriptor.length
+                )
+              }
+            />
+          </FlexRowHalfWidth>
+          <FlexRowHalfWidth>
+            <FlexCol>
+              <ControlLabel
+                label="Bear Type &amp; Skill"
+                id={StatTypes.typeSkill}
+              >
+                <Select
+                  options={selectOptionsBearSkill}
+                  value={state.typeskill}
+                  onChange={(value) =>
+                    dispatch({
+                      stat: StatTypes.typeSkill,
+                      type: 'change',
+                      value,
+                    })
+                  }
+                  hasEmptyValue
+                />
+              </ControlLabel>
+            </FlexCol>
+            <DiceButton
+              onClick={() =>
+                handleStatDiceRoll(
+                  StatTypes.typeSkill,
+                  selectOptionsDescriptor.length
+                )
+              }
+            />
+          </FlexRowHalfWidth>
+          <FlexRowHalfWidth>
+            <FlexCol>
+              <ControlLabel label="Role" id={StatTypes.role}>
+                <Select
+                  options={selectOptionsBearRole}
+                  value={state.role}
+                  onChange={(value) =>
+                    dispatch({ stat: StatTypes.role, type: 'change', value })
+                  }
+                  hasEmptyValue
+                />
+              </ControlLabel>
+            </FlexCol>
+            <DiceButton
+              onClick={() =>
+                handleStatDiceRoll(
+                  StatTypes.role,
+                  selectOptionsDescriptor.length
+                )
+              }
+            />
+          </FlexRowHalfWidth>
+          {/* TODO: Custom behaviour for multiple hats */}
+          {/* <ControlLabel label="Hat (optional)" id={StatTypes.hat}>
+            <Select
+              options={selectOptionsHat}
+              value={state.hat[0]}
+              onChange={(value) => dispatch({ type: StatTypes.hat, value })}
+              hasEmptyValue
+            />
+          </ControlLabel> */}
+        </GridWithGap>
       </section>
       <section>
         <ChangingStatesText />

@@ -24,13 +24,18 @@ export const OutlineText = () => (
 export const CharacterCreationText = () => (
   <div>
     <h2>Character Creation</h2>
-    <p>Roll 3D6 to determine your descriptor, your role, and your bear type.</p>
+    <p>
+      Either manually select, or press the "Roll" button next to each stat. Roll{' '}
+      <Strong>3D6</Strong> to determine your descriptor, your role, and your
+      bear type.
+      {/* Optionally roll <Strong>1D8</Strong> for the Hat your bear wears, if you roll "roll again" */}
+    </p>
   </div>
 );
 
 export const ChangingStatesText = () => (
   <div>
-    <h3>Stats</h3>
+    <h3>Stats Tracking</h3>
     <p>
       <Strong>Frustration:</Strong> When the plan fails and you run into
       difficulty, move one point from <StrongUpper>Criminal</StrongUpper> into{' '}
@@ -78,8 +83,13 @@ export const EndText = () => (
 );
 export const FooterText = () => (
   <Footer>
-  Companion for the one-page RPG Honey Heist by Grant Howitt, please support the creator on their <a href="https://www.patreon.com/gshowitt" target="_blank" rel="noreferrer">Patreon</a>, 
-  or buy buying their games on <a href="https://gshowitt.itch.io">itch.io</a>. This app is made by{' '}
+    Companion for the one-page RPG Honey Heist by Grant Howitt, please support
+    the creator on their{' '}
+    <a href="https://www.patreon.com/gshowitt" target="_blank" rel="noreferrer">
+      Patreon
+    </a>
+    , or buy buying their games on{' '}
+    <a href="https://gshowitt.itch.io">itch.io</a>. This app is made by{' '}
     <a href="https://georgewl.dev" target="_blank" rel="noreferrer">
       GeorgeWL
     </a>

@@ -7,9 +7,8 @@ const primaryStyle = css`
 `;
 
 const secondaryStyle = css`
-  background: transparent;
-  border-color: #466800;
-  color: white;
+  background: white;
+  border-color: lightgray;
 `;
 
 const cancelStyle = css`
@@ -18,6 +17,10 @@ const cancelStyle = css`
 `;
 
 const Button = styled.button<{ variant?: ButtonStyleTypes }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   border-width: 2px;
   border-style: solid;
   border-color: transparent;
@@ -26,7 +29,7 @@ const Button = styled.button<{ variant?: ButtonStyleTypes }>`
   border-radius: 5px;
   transition: background 0.4s ease, border 0.4s linear, color 0.4s linear,
     transform linear 0.2s;
-
+  text-align: center;
   ${(props) =>
     (props.variant === ButtonStyleTypes.primary ||
       props.variant === undefined) &&
