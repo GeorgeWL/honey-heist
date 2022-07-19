@@ -16,7 +16,7 @@ export const FlexCol = styled(Flex)`
 
 export const FlexRowFullWidth = styled(FlexRow)`
   width: 100%;
-  justify-content: flex-start;
+  justify-content: space-evenly;;
   align-items: flex-start;
   margin: 10px 5px;
 `;
