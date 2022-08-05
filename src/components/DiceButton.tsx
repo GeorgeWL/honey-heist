@@ -1,7 +1,8 @@
-import { ButtonStyleTypes } from '../enums/ButtonTypes';
-import Button from './styled/Button';
+import { CSSProperties } from 'styled-components';
 import d6Image from '../assets/dice6sided.svg';
 import d8Image from '../assets/dice8sided.svg';
+import { ButtonStyleTypes } from '../enums/ButtonTypes';
+import Button from './styled/Button';
 export enum DiceType {
   d6 = 'd6',
   d8 = 'd8',
@@ -10,6 +11,7 @@ interface IProps {
   onClick: () => void;
   disabled?: boolean;
   diceType?: DiceType;
+  style?: CSSProperties;
 }
 
 const getDiceImageProperties = (diceType: DiceType) => {
@@ -29,13 +31,19 @@ const getDiceImageProperties = (diceType: DiceType) => {
   }
 };
 
-const DiceButton = ({ onClick, disabled, diceType = DiceType.d6 }: IProps) => {
+const DiceButton = ({
+  onClick,
+  disabled,
+  diceType = DiceType.d6,
+  style,
+}: IProps) => {
   const { title, src } = getDiceImageProperties(diceType);
   return (
     <Button
       variant={ButtonStyleTypes.secondary}
       onClick={onClick}
       disabled={disabled}
+      style={style}
     >
       <img src={src} title={title} alt="Dice" style={{ width: '50px' }} /> Roll
     </Button>

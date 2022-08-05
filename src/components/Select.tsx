@@ -3,11 +3,12 @@ import ISelectOption from '../interfaces/ISelectOption';
 interface IProps {
   options: ISelectOption[];
   onChange: (value: string) => void;
-  value: string | number;
+  value: string | number | string[];
   hasEmptyValue?: boolean;
   emptyValueLabel?: JSX.Element | string;
   disabled?: boolean;
   id?: string;
+  multiple?: boolean;
 }
 
 const Select = ({
@@ -18,12 +19,14 @@ const Select = ({
   onChange,
   disabled,
   id,
+  multiple,
 }: IProps) => (
   <select
     value={value}
     disabled={disabled}
     onChange={(evt) => onChange(evt.target.value)}
     id={id}
+    multiple={multiple}
   >
     {hasEmptyValue && (
       <option value="" disabled>

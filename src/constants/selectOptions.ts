@@ -41,5 +41,5 @@ export const selectOptionsHat: ISelectOption[] = [
   { label: HatType[4], value: 4 },
   { label: HatType[5], value: 5 },
   { label: HatType[6], value: 6 },
-  { label: HatType[7], value: 7 },
+  { label: HatType[7], value: 7, disabled: true },
 ];
