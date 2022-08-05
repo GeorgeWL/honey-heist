@@ -29,6 +29,7 @@ import {
 } from './constants/selectOptions';
 import { GameStateType } from './enums/GameStateTypes';
 import { StatTypes } from './enums/StatTypes';
+import ISelectOption from './interfaces/ISelectOption';
 import characterReducer, { initialState } from './reducers/characterReducer';
 
 const App = () => {
@@ -43,15 +44,15 @@ const App = () => {
 
   const handleStatDiceRoll = (
     stat: StatTypes,
-    optionsCount: number,
+    options: ISelectOption[],
     diceType = DiceType.d6
   ) =>
     dispatch({
       stat,
       type: diceType,
-      value: Math.floor(Math.random() * optionsCount),
+      value: options[Math.floor(Math.random() * options.length)],
     });
-
+  const selectOptionHatsWithoutRollAgain = selectOptionsHat.slice(0, 7);
   return (
     <div className="App">
       {isModalOpen && (
@@ -104,7 +105,7 @@ const App = () => {
               onClick={() =>
                 handleStatDiceRoll(
                   StatTypes.descriptor,
-                  selectOptionsDescriptor.length
+                  selectOptionsDescriptor
                 )
               }
             />
@@ -131,10 +132,7 @@ const App = () => {
             </FlexCol>
             <DiceButton
               onClick={() =>
-                handleStatDiceRoll(
-                  StatTypes.typeSkill,
-                  selectOptionsDescriptor.length
-                )
+                handleStatDiceRoll(StatTypes.typeSkill, selectOptionsDescriptor)
               }
             />
           </FlexRowHalfWidth>
@@ -153,10 +151,7 @@ const App = () => {
             </FlexCol>
             <DiceButton
               onClick={() =>
-                handleStatDiceRoll(
-                  StatTypes.role,
-                  selectOptionsDescriptor.length
-                )
+                handleStatDiceRoll(StatTypes.role, selectOptionsDescriptor)
               }
             />
           </FlexRowHalfWidth>
@@ -165,8 +160,8 @@ const App = () => {
               {/* TODO: Custom behaviour for multiple hats */}
               <ControlLabel label="Hats (optional)" id={StatTypes.hats}>
                 <Select
-                  options={selectOptionsHat}
-                  value={state.hats}
+                  options={selectOptionHatsWithoutRollAgain}
+                  value={state.hats as any}
                   onChange={(value) =>
                     dispatch({
                       stat: StatTypes.hats,
@@ -177,21 +172,21 @@ const App = () => {
                   multiple
                 />
               </ControlLabel>
-              <DiceButton
-                style={{ margin: '10px 0' }}
-                diceType={DiceType.d8}
-                onClick={() =>
-                  handleStatDiceRoll(
-                    StatTypes.hats,
-                    selectOptionsHat.length, // extra for the Roll again
-                    DiceType.d8
-                  )
-                }
-              />
-              {state.isD8HatRoll && (
-                <StrongUpper>D8! Roll again to add an extra hat!</StrongUpper>
-              )}
             </FlexCol>
+            <DiceButton
+              style={{ margin: '10px 0' }}
+              diceType={DiceType.d8}
+              onClick={() =>
+                handleStatDiceRoll(
+                  StatTypes.hats,
+                  selectOptionsHat, // extra for the Roll again
+                  DiceType.d8
+                )
+              }
+            />
+            {state.isD8HatRoll && (
+              <StrongUpper>D8! Roll again to add an extra hat!</StrongUpper>
+            )}
           </FlexRowHalfWidth>
         </GridWithGap>
       </section>

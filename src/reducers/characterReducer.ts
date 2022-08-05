@@ -1,11 +1,12 @@
 import { DiceType } from '../components/DiceButton';
 import { StatTypes } from '../enums/StatTypes';
+import ISelectOption from '../interfaces/ISelectOption';
 
 export const initialState = {
   [StatTypes.descriptor]: '',
   [StatTypes.role]: '',
   [StatTypes.typeSkill]: '',
-  [StatTypes.hats]: [],
+  [StatTypes.hats]: [] as ISelectOption[],
   isD8HatRoll: false,
 };
 
@@ -23,23 +24,27 @@ const characterReducer = (
     case 'reset':
       return initialState;
     case 'change':
+    case 'change-multi':
     case DiceType.d6:
       return {
         ...state,
         [stat]: value,
       };
-    case 'change-multi':
     case DiceType.d8:
-      // store to set
-      const hatSet = new Set<string>(state.hats);
-      hatSet.size > 0 && hatSet.has(value)
-        ? hatSet.delete(String(value))
-        : hatSet.add(String(value));
-      const newValue = Array.from(hatSet);
+      console.log(stat, state[stat], value);
+      if (value.value === 7) {
+        return {
+          ...state,
+          isD8HatRoll: true,
+        };
+      }
       return {
         ...state,
-        [stat]: newValue,
-        isD8HatRoll: !value || value === 7,
+        [stat]:
+          stat === StatTypes.hats
+            ? Array.from(new Set([...state.hats, value]))
+            : value,
+        isD8HatRoll: false,
       };
     default:
       throw new TypeError(`NOT IMPLEMENTED: ${type}`);
