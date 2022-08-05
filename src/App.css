@@ -31,10 +31,6 @@
   color: black;
 }
 
-a[href] {
-  color: #005d78;
-}
-
 em {
   color: #404040;
   font-style: normal;

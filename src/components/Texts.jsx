@@ -84,25 +84,28 @@ export const EndText = () => (
 );
 export const FooterText = () => (
   <Footer>
-    Companion for the one-page RPG Honey Heist by Grant Howitt, please support
-    the creator on their{' '}
-    <Link href="https://www.patreon.com/gshowitt">Patreon</Link>, or buy buying
-    their games on <Link href="https://gshowitt.itch.io">itch.io</Link>. This
-    app is made by <Link href="https://georgewl.dev">GeorgeWL</Link>
-    <br />
-    <Strong title="Creative Commons Attributable license - can be used freely, but must be credited">
-      CCA Assets:
-    </Strong>{' '}
-    <Link href="https://thenounproject.com/browse/collection-icon/polyhedral-dice-73191/">
-      Polyhedral Dice by Lonnie Tapscott
-    </Link>
-    ,{' '}
-    <Link href="https://thenounproject.com/icon/fierce-bear-2735831/">
-      Fierce Bear by Gan Khoon Lay
-    </Link>
-    ,{' '}
-    <Link href="https://thenounproject.com/icon/robber-3346161/">
-      Robber by Round Icons
-    </Link>
+    <p>
+      Companion for the one-page RPG Honey Heist by Grant Howitt, please support
+      the creator on their{' '}
+      <Link href="https://www.patreon.com/gshowitt">Patreon</Link>, or buy
+      buying their games on <Link href="https://gshowitt.itch.io">itch.io</Link>
+      . This app is made by <Link href="https://georgewl.dev">GeorgeWL</Link>
+    </p>
+    <p>
+      <Strong title="Creative Commons Attributable license - can be used freely, but must be credited">
+        CCA Assets:
+      </Strong>{' '}
+      <Link href="https://thenounproject.com/browse/collection-icon/polyhedral-dice-73191/">
+        Polyhedral Dice by Lonnie Tapscott
+      </Link>
+      ,{' '}
+      <Link href="https://thenounproject.com/icon/fierce-bear-2735831/">
+        Fierce Bear by Gan Khoon Lay
+      </Link>
+      ,{' '}
+      <Link href="https://thenounproject.com/icon/robber-3346161/">
+        Robber by Round Icons
+      </Link>
+    </p>
   </Footer>
 );
