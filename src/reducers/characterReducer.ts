@@ -31,7 +31,6 @@ const characterReducer = (
         [stat]: value,
       };
     case DiceType.d8:
-      console.log(stat, state[stat], value);
       if (value.value === 7) {
         return {
           ...state,
