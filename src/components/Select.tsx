@@ -1,8 +1,9 @@
 import ISelectOption from '../interfaces/ISelectOption';
+import ReactSelect from 'react-select';
 
 interface IProps {
   options: ISelectOption[];
-  onChange: (value: string) => void;
+  onChange: (value: any) => void;
   value: string | number | string[];
   hasEmptyValue?: boolean;
   emptyValueLabel?: JSX.Element | string;
@@ -10,7 +11,6 @@ interface IProps {
   id?: string;
   multiple?: boolean;
 }
-
 const Select = ({
   options,
   hasEmptyValue,
@@ -21,14 +21,17 @@ const Select = ({
   id,
   multiple,
 }: IProps) => (
-  <select
+  <ReactSelect
     value={value}
-    disabled={disabled}
-    onChange={(evt) => onChange(evt.target.value)}
+    isDisabled={disabled}
+    onChange={onChange}
     id={id}
-    multiple={multiple}
-  >
-    {hasEmptyValue && (
+    isMulti={multiple}
+    options={options as unknown as any}
+    placeholder={hasEmptyValue && emptyValueLabel}
+    styles={{ control: (provided) => ({ ...provided, minWidth: '320px' }) }}
+  />
+  /* {hasEmptyValue && (
       <option value="" disabled>
         {emptyValueLabel}
       </option>
@@ -42,7 +45,7 @@ const Select = ({
         {opt.label}
       </option>
     ))}
-  </select>
+  </select> */
 );
 
 export default Select;
