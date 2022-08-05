@@ -16,13 +16,13 @@ export const FlexCol = styled(Flex)`
 
 export const FlexRowFullWidth = styled(FlexRow)`
   width: 100%;
-  justify-content: space-evenly;;
-  align-items: flex-start;
-  margin: 10px 5px;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 10px 5px 0 0;
 `;
 
 export const FlexRowHalfWidth = styled(FlexRowFullWidth)`
-  width: 50%;
+  min-width: 50%;
   margin: auto;
 `;
 

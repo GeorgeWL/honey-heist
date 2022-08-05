@@ -3,7 +3,7 @@ import './App.css';
 import logo from './assets/logo.png';
 import BearStateTracker from './components/BearStateTracker';
 import ControlLabel from './components/ControlLabel';
-import DiceButton from './components/DiceButton';
+import DiceButton, { DiceType } from './components/DiceButton';
 import { FailStateBear, FailStateCriminal } from './components/FailStates';
 import Modal from './components/Modal';
 import Select from './components/Select';
@@ -13,6 +13,7 @@ import {
   FlexRowHalfWidth,
 } from './components/styled/Flex';
 import { GridWithGap } from './components/styled/Grid';
+import { StrongUpper } from './components/styled/Strong';
 import {
   ChangingStatesText,
   CharacterCreationText,
@@ -24,9 +25,11 @@ import {
   selectOptionsBearRole,
   selectOptionsBearSkill,
   selectOptionsDescriptor,
+  selectOptionsHat,
 } from './constants/selectOptions';
 import { GameStateType } from './enums/GameStateTypes';
 import { StatTypes } from './enums/StatTypes';
+import ISelectOption from './interfaces/ISelectOption';
 import characterReducer, { initialState } from './reducers/characterReducer';
 
 const App = () => {
@@ -39,13 +42,17 @@ const App = () => {
     setGameStatus(failState);
   };
 
-  const handleStatDiceRoll = (stat: StatTypes, optionsCount: number) =>
+  const handleStatDiceRoll = (
+    stat: StatTypes,
+    options: ISelectOption[],
+    diceType = DiceType.d6
+  ) =>
     dispatch({
       stat,
-      type: 'roll',
-      value: Math.floor(Math.random() * optionsCount),
+      type: diceType,
+      value: options[Math.floor(Math.random() * options.length)],
     });
-
+  const selectOptionHatsWithoutRollAgain = selectOptionsHat.slice(0, 7);
   return (
     <div className="App">
       {isModalOpen && (
@@ -98,7 +105,7 @@ const App = () => {
               onClick={() =>
                 handleStatDiceRoll(
                   StatTypes.descriptor,
-                  selectOptionsDescriptor.length
+                  selectOptionsDescriptor
                 )
               }
             />
@@ -125,10 +132,7 @@ const App = () => {
             </FlexCol>
             <DiceButton
               onClick={() =>
-                handleStatDiceRoll(
-                  StatTypes.typeSkill,
-                  selectOptionsDescriptor.length
-                )
+                handleStatDiceRoll(StatTypes.typeSkill, selectOptionsDescriptor)
               }
             />
           </FlexRowHalfWidth>
@@ -147,22 +151,43 @@ const App = () => {
             </FlexCol>
             <DiceButton
               onClick={() =>
-                handleStatDiceRoll(
-                  StatTypes.role,
-                  selectOptionsDescriptor.length
-                )
+                handleStatDiceRoll(StatTypes.role, selectOptionsDescriptor)
               }
             />
           </FlexRowHalfWidth>
-          {/* TODO: Custom behaviour for multiple hats */}
-          {/* <ControlLabel label="Hat (optional)" id={StatTypes.hat}>
-            <Select
-              options={selectOptionsHat}
-              value={state.hat[0]}
-              onChange={(value) => dispatch({ type: StatTypes.hat, value })}
-              hasEmptyValue
+          <FlexRowHalfWidth>
+            <FlexCol>
+              {/* TODO: Custom behaviour for multiple hats */}
+              <ControlLabel label="Hats (optional)" id={StatTypes.hats}>
+                <Select
+                  options={selectOptionHatsWithoutRollAgain}
+                  value={state.hats as any}
+                  onChange={(value) =>
+                    dispatch({
+                      stat: StatTypes.hats,
+                      type: 'change-multi',
+                      value,
+                    })
+                  }
+                  multiple
+                />
+              </ControlLabel>
+            </FlexCol>
+            <DiceButton
+              style={{ margin: '10px 0' }}
+              diceType={DiceType.d8}
+              onClick={() =>
+                handleStatDiceRoll(
+                  StatTypes.hats,
+                  selectOptionsHat, // extra for the Roll again
+                  DiceType.d8
+                )
+              }
             />
-          </ControlLabel> */}
+            {state.isD8HatRoll && (
+              <StrongUpper>D8! Roll again to add an extra hat!</StrongUpper>
+            )}
+          </FlexRowHalfWidth>
         </GridWithGap>
       </section>
       <section>

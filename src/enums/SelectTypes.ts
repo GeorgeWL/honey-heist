@@ -31,5 +31,5 @@ export enum HatType {
   '5: Cowboy',
   '6: Fez',
   '7: Crown',
-  '8: Roll Twice',
+  '8: Roll Again (add an extra hat to a towering pile of hats)',
 }

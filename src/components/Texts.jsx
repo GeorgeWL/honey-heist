@@ -1,5 +1,6 @@
 import List from './List';
 import { Footer } from './styled/Footer';
+import Link from './styled/Link';
 import { Strong, StrongUpper } from './styled/Strong';
 
 export const OutlineText = () => (
@@ -28,7 +29,7 @@ export const CharacterCreationText = () => (
       Either manually select, or press the "Roll" button next to each stat. Roll{' '}
       <Strong>3D6</Strong> to determine your descriptor, your role, and your
       bear type.
-      {/* Optionally roll <Strong>1D8</Strong> for the Hat your bear wears, if you roll "roll again" */}
+      {/* Optionally roll <Strong>1D8</Strong> for the Hat your bear wears, if you roll an 8, "roll again" and keep stacking hats */}
     </p>
   </div>
 );
@@ -83,15 +84,28 @@ export const EndText = () => (
 );
 export const FooterText = () => (
   <Footer>
-    Companion for the one-page RPG Honey Heist by Grant Howitt, please support
-    the creator on their{' '}
-    <a href="https://www.patreon.com/gshowitt" target="_blank" rel="noreferrer">
-      Patreon
-    </a>
-    , or buy buying their games on{' '}
-    <a href="https://gshowitt.itch.io">itch.io</a>. This app is made by{' '}
-    <a href="https://georgewl.dev" target="_blank" rel="noreferrer">
-      GeorgeWL
-    </a>
+    <p>
+      Companion for the one-page RPG Honey Heist by Grant Howitt, please support
+      the creator on their{' '}
+      <Link href="https://www.patreon.com/gshowitt">Patreon</Link>, or buy
+      buying their games on <Link href="https://gshowitt.itch.io">itch.io</Link>
+      . This app is made by <Link href="https://georgewl.dev">GeorgeWL</Link>
+    </p>
+    <p>
+      <Strong title="Creative Commons Attributable license - can be used freely, but must be credited">
+        CCA Assets:
+      </Strong>{' '}
+      <Link href="https://thenounproject.com/browse/collection-icon/polyhedral-dice-73191/">
+        Polyhedral Dice by Lonnie Tapscott
+      </Link>
+      ,{' '}
+      <Link href="https://thenounproject.com/icon/fierce-bear-2735831/">
+        Fierce Bear by Gan Khoon Lay
+      </Link>
+      ,{' '}
+      <Link href="https://thenounproject.com/icon/robber-3346161/">
+        Robber by Round Icons
+      </Link>
+    </p>
   </Footer>
 );

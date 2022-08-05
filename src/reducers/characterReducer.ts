@@ -1,10 +1,13 @@
+import { DiceType } from '../components/DiceButton';
 import { StatTypes } from '../enums/StatTypes';
+import ISelectOption from '../interfaces/ISelectOption';
 
 export const initialState = {
   [StatTypes.descriptor]: '',
   [StatTypes.role]: '',
   [StatTypes.typeSkill]: '',
-  [StatTypes.hat]: [''],
+  [StatTypes.hats]: [] as ISelectOption[],
+  isD8HatRoll: false,
 };
 
 interface IAction {
@@ -21,14 +24,26 @@ const characterReducer = (
     case 'reset':
       return initialState;
     case 'change':
-    case 'roll':
-      console.log({
-        ...state,
-        [stat]: value,
-      });
+    case 'change-multi':
+    case DiceType.d6:
       return {
         ...state,
         [stat]: value,
+      };
+    case DiceType.d8:
+      if (value.value === 7) {
+        return {
+          ...state,
+          isD8HatRoll: true,
+        };
+      }
+      return {
+        ...state,
+        [stat]:
+          stat === StatTypes.hats
+            ? Array.from(new Set([...state.hats, value]))
+            : value,
+        isD8HatRoll: false,
       };
     default:
       throw new TypeError(`NOT IMPLEMENTED: ${type}`);
