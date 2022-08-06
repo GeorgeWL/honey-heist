@@ -1,4 +1,16 @@
-# To Do
+# Honey Heist Tracker
+
+Companion for the one-page RPG Honey Heist by Grant Howitt, please support the creator on their <a href="https://www.patreon.com/gshowitt">Patreon</a>, or buying their games on <a href="https://gshowitt.itch.io">itch.io</a>. This app is made by <a href="https://georgewl.dev">GeorgeWL</a>
+
+## CCA Assets
+  
+*these assets are Creative Commons Attributable license - can be used freely, but must be credited in plain sight*
+
+- Polyhedral Dice by Lonnie Tapscott [LINK](https://thenounproject.com/browse/collection-icon/polyhedral-dice-73191/")
+- Fierce Bear by Gan Khoon Lay [LINK](https://thenounproject.com/icon/fierce-bear-2735831/)
+- Robber by Round Icons [LINK](https://thenounproject.com/icon/robber-3346161/)
+
+## To Do
 
 - [X] Add Hats tracker
 - [X] General clean-up
