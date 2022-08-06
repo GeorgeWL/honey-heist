@@ -132,7 +132,7 @@ const App = () => {
             </FlexCol>
             <DiceButton
               onClick={() =>
-                handleStatDiceRoll(StatTypes.typeSkill, selectOptionsDescriptor)
+                handleStatDiceRoll(StatTypes.typeSkill, selectOptionsBearSkill)
               }
             />
           </FlexRowHalfWidth>
@@ -151,7 +151,7 @@ const App = () => {
             </FlexCol>
             <DiceButton
               onClick={() =>
-                handleStatDiceRoll(StatTypes.role, selectOptionsDescriptor)
+                handleStatDiceRoll(StatTypes.role, selectOptionsBearRole)
               }
             />
           </FlexRowHalfWidth>
@@ -174,7 +174,6 @@ const App = () => {
               </ControlLabel>
             </FlexCol>
             <DiceButton
-              style={{ margin: '10px 0' }}
               diceType={DiceType.d8}
               onClick={() =>
                 handleStatDiceRoll(

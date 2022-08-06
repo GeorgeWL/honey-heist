@@ -29,7 +29,11 @@ export const CharacterCreationText = () => (
       Either manually select, or press the "Roll" button next to each stat. Roll{' '}
       <Strong>3D6</Strong> to determine your descriptor, your role, and your
       bear type.
-      {/* Optionally roll <Strong>1D8</Strong> for the Hat your bear wears, if you roll an 8, "roll again" and keep stacking hats */}
+    </p>
+    <p>
+      Optionally roll <Strong>1D8</Strong> for the Hat(s) your bear wears, if
+      you roll an <Strong>8</Strong>, roll again and keep stacking hats (stop
+      whenever you want)
     </p>
   </div>
 );

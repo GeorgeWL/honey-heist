@@ -1,4 +1,4 @@
-import { CSSProperties } from 'styled-components';
+import styled from 'styled-components';
 import d6Image from '../assets/dice6sided.svg';
 import d8Image from '../assets/dice8sided.svg';
 import { ButtonStyleTypes } from '../enums/ButtonTypes';
@@ -11,7 +11,6 @@ interface IProps {
   onClick: () => void;
   disabled?: boolean;
   diceType?: DiceType;
-  style?: CSSProperties;
 }
 
 const getDiceImageProperties = (diceType: DiceType) => {
@@ -31,22 +30,20 @@ const getDiceImageProperties = (diceType: DiceType) => {
   }
 };
 
-const DiceButton = ({
-  onClick,
-  disabled,
-  diceType = DiceType.d6,
-  style,
-}: IProps) => {
+const MarginButton = styled(Button)`
+  margin: 10px;
+`;
+
+const DiceButton = ({ onClick, disabled, diceType = DiceType.d6 }: IProps) => {
   const { title, src } = getDiceImageProperties(diceType);
   return (
-    <Button
+    <MarginButton
       variant={ButtonStyleTypes.secondary}
       onClick={onClick}
       disabled={disabled}
-      style={style}
     >
       <img src={src} title={title} alt="Dice" style={{ width: '50px' }} /> Roll
-    </Button>
+    </MarginButton>
   );
 };
 
