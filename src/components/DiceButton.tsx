@@ -30,11 +30,12 @@ const getDiceImageProperties = (diceType: DiceType) => {
   }
 };
 
+const MarginButton = styled(Button)`
+  margin: 10px;
+`;
+
 const DiceButton = ({ onClick, disabled, diceType = DiceType.d6 }: IProps) => {
   const { title, src } = getDiceImageProperties(diceType);
-  const MarginButton = styled(Button)`
-    margin: 10px;
-  `;
   return (
     <MarginButton
       variant={ButtonStyleTypes.secondary}
