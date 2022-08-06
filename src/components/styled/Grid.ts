@@ -16,4 +16,7 @@ export const GridWithGap = styled(Grid)`
   grid-template-rows: repeat(${({ rows }) => rows ?? 2}, 1fr);
   grid-column-gap: ${({ gapPx }) => gapPx ?? 10}px;
   grid-row-gap: ${({ gapPx }) => gapPx ?? 10}px;
+  @media (max-width: 768px) {
+    grid-template-columns: 100%;
+  }
 `;
