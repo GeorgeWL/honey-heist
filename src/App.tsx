@@ -174,7 +174,6 @@ const App = () => {
               </ControlLabel>
             </FlexCol>
             <DiceButton
-              style={{ margin: '10px 0' }}
               diceType={DiceType.d8}
               onClick={() =>
                 handleStatDiceRoll(
