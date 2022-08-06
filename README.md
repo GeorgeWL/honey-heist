@@ -1,8 +1,12 @@
 # To Do
 
-- [ ] Add Hats tracker
-- [ ] General clean-up
-- [ ] Add more documentation 
+- [X] Add Hats tracker
+- [X] General clean-up
+
+If you have any suggestions or feature requests, please use the [Issues page](https://github.com/GeorgeWL/honey-heist/issues), and/or [submit a Pull Request](https://github.com/GeorgeWL/honey-heist/pulls)
+
+<details>
+<summary>Running locally</summary>
 
 # Getting Started with Create React App
 
@@ -52,3 +56,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+</details>
